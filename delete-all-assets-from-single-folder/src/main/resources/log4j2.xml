@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="log-path">logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console-log" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c{1} + [%t] - %msg%n"/>
+        </Console>
+        <RollingFile name="trace-log" fileName="${log-path}/trace.log" filePattern="${log-path}/trace-log-%d{yyyy-MM-dd-hh-mm-ss}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c{1} + [%t] - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy minSize="0"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="error-log" fileName="${log-path}/error.log" filePattern="${log-path}/error-log-%d{yyyy-MM-dd-hh-mm-ss}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c{1} + [%t] - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy minSize="0"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="info-log" fileName="${log-path}/info.log" filePattern="${log-path}/info-log-%d{yyyy-MM-dd-hh-mm-ss}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c{1} + [%t] - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy minSize="0"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="debug" additivity="false">
+            <appender-ref ref="trace-log" level="trace"/>
+            <appender-ref ref="error-log" level="error"/>
+            <appender-ref ref="info-log" level="info"/>
+            <appender-ref ref="console-log" level="debug"/>
+        </Root>
+    </Loggers>
+</Configuration>

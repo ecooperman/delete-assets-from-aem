@@ -1,0 +1,4 @@
+<serverConfiguration>
+    <accessToken>test</accessToken>
+    <timeout>300000</timeout>
+</serverConfiguration>
