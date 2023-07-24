@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="aemUrl" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="accessToken" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="timeout" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "aemUrl",
     "accessToken",
     "timeout"
 })
@@ -36,17 +38,44 @@ import javax.xml.bind.annotation.XmlType;
 public class ServerConfiguration {
 
     @XmlElement(required = true)
+    protected String aemUrl;
+
+    @XmlElement(required = true)
     protected String accessToken;
 
     protected Integer timeout;
 
     /**
-     * Gets the value of the accessToken property.
+     * Gets the value of the aemUrl property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
+     */
+    public String getAemUrl() {
+        return aemUrl;
+    }
+
+    /**
+     * Sets the value of the aemUrl property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAemUrl(String value) {
+        this.aemUrl = value;
+    }
+
+    /**
+     * Gets the value of the accessToken property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
      */
     public String getAccessToken() {
         return accessToken;
@@ -54,11 +83,11 @@ public class ServerConfiguration {
 
     /**
      * Sets the value of the accessToken property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAccessToken(String value) {
         this.accessToken = value;

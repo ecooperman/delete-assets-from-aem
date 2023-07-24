@@ -2,6 +2,7 @@
     <xs:element name="serverConfiguration">
         <xs:complexType>
             <xs:sequence>
+                <xs:element type="xs:string" name="aemUrl"/>
                 <xs:element type="xs:string" name="accessToken"/>
                 <xs:element type="xs:int" name="timeout" minOccurs="0"/>
             </xs:sequence>

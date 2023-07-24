@@ -1,13 +1,9 @@
 package com.rightpoint.adobe.assets;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.rightpoint.adobe.assets.configuration.elem.FolderConfiguration;
 import com.rightpoint.adobe.assets.exceptions.AssetsException;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,11 +29,11 @@ public class App {
                 final ServerConfiguration serverConfig = configReader.readServerConfiguration(cli.getServerFilePath());
                 final FolderConfiguration folderConfig = configReader.readFolderConfiguration(cli.getFolderFilePath());
 
-                logger.debug("Server config details: \naccessToken: {}\ntimeout: {}:", serverConfig.getAccessToken(), serverConfig.getTimeout());
+                logger.debug("Server config details: \naemUrl: {}\n accessToken: {}\ntimeout: {}:", serverConfig.getAemUrl(), serverConfig.getAccessToken(), serverConfig.getTimeout());
                 logger.debug("Folder config details: \npathToFolder: {}", folderConfig.getPathToFolder());
 
-                Engine engine = new Engine();
-
+                Engine engine = new Engine(serverConfig.getAemUrl(), serverConfig.getAccessToken(), serverConfig.getTimeout());
+                engine.retrieveAndDeleteAssets(folderConfig.getPathToFolder());
 
                 logger.info("End of deletion process");
 
